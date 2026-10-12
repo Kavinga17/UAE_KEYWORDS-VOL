@@ -1,0 +1,608 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Medfuture — SEO Market Demand · UAE</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F7FA;--surface:#FFF;--border:#E2E8F0;
+  --text:#1A202C;--muted:#718096;--accent:#1B6CA8;
+  --vol-bar:#3182CE;--vol-bg:#EBF4FF;
+  --cand-bg:#EBF8FF;--cand-txt:#2B6CB0;
+  --pend-bg:#FFF7E6;--pend-txt:#B7791F;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#0F172A;--surface:#1E293B;--border:#334155;
+  --text:#F1F5F9;--muted:#94A3B8;--accent:#3B82F6;
+  --vol-bar:#60A5FA;--vol-bg:#1E3A5F;
+  --cand-bg:#1E3A5F;--cand-txt:#93C5FD;
+  --pend-bg:#2D2008;--pend-txt:#F6AD55;
+}}
+:root[data-theme="light"]{
+  --bg:#F5F7FA;--surface:#FFF;--border:#E2E8F0;
+  --text:#1A202C;--muted:#718096;--accent:#1B6CA8;
+  --vol-bar:#3182CE;--vol-bg:#EBF4FF;
+  --cand-bg:#EBF8FF;--cand-txt:#2B6CB0;
+  --pend-bg:#FFF7E6;--pend-txt:#B7791F;
+}
+:root[data-theme="dark"]{
+  --bg:#0F172A;--surface:#1E293B;--border:#334155;
+  --text:#F1F5F9;--muted:#94A3B8;--accent:#3B82F6;
+  --vol-bar:#60A5FA;--vol-bg:#1E3A5F;
+  --cand-bg:#1E3A5F;--cand-txt:#93C5FD;
+  --pend-bg:#2D2008;--pend-txt:#F6AD55;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);color:var(--text);font-size:14px;min-height:100vh}
+.hdr{background:var(--accent);color:#fff;padding:14px 24px;display:flex;
+  align-items:center;gap:12px;position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.hdr h1{font-size:17px;font-weight:700;letter-spacing:-.3px}
+.hdr small{font-size:12px;opacity:.75;margin-left:auto}
+.tabs{background:var(--surface);border-bottom:1px solid var(--border);
+  padding:0 24px;display:flex;position:sticky;top:52px;z-index:99;overflow-x:auto}
+.tab{padding:11px 18px;cursor:pointer;font-size:13px;font-weight:600;
+  color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;
+  transition:all .15s;user-select:none}
+.tab:hover{color:var(--accent)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.toolbar{padding:14px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:1100px;margin:0 auto}
+.cnt{font-size:12px;color:var(--muted);margin-left:auto}
+.wrap{padding:0 24px 48px;max-width:1100px;margin:0 auto}
+.section{margin-bottom:12px}
+.shdr{display:flex;align-items:center;gap:10px;padding:10px 16px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:8px 8px 0 0;border-bottom:none;font-weight:700;
+  font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.sdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.scnt{margin-left:auto;font-weight:400;font-size:11px;opacity:.7}
+.tbl-wrap{width:100%;overflow-x:auto}
+table{width:100%;table-layout:fixed;border-collapse:collapse;background:var(--surface);
+  border:1px solid var(--border);border-radius:0 0 8px 8px}
+col.c-num {width:48px}
+col.c-kw  {width:auto}
+col.c-tgt {width:130px}
+col.c-typ {width:100px}
+col.c-vol {width:160px}
+thead th{padding:7px 12px;font-size:11px;font-weight:600;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.5px;background:var(--bg);
+  border-bottom:1px solid var(--border);text-align:left;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{filter:brightness(.97)}
+td{padding:9px 12px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis}
+.n{text-align:center;font-size:12px;font-weight:700;
+  color:var(--muted);position:relative;padding-left:14px}
+.bar{position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:0 2px 2px 0}
+.kw{font-size:13px;font-weight:500;white-space:normal;overflow-wrap:anywhere}
+.tgt{font-size:12px;color:var(--muted);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;text-align:center}
+.cand{background:var(--cand-bg);color:var(--cand-txt);font-size:11px;
+  font-weight:600;padding:3px 9px;border-radius:6px;white-space:nowrap;
+  display:inline-block}
+.vc{display:flex;align-items:center;gap:8px}
+.vn{font-size:13px;font-weight:700;min-width:38px;text-align:right;
+  font-variant-numeric:tabular-nums;flex-shrink:0}
+.vbw{flex:1;height:5px;background:var(--vol-bg);border-radius:3px;overflow:hidden;min-width:40px}
+.vbf{height:100%;background:var(--vol-bar);border-radius:3px}
+.empty{text-align:center;padding:48px;color:var(--muted)}
+.nq-section{margin-bottom:12px;border:1px solid #F6D860;border-radius:8px;overflow:hidden}
+.nq-row{display:flex;align-items:center;padding:10px 16px;background:#FFFBEA;
+  border-bottom:1px solid #F6E88A;font-size:13px;font-style:italic;color:#92660A}
+.nq-row:last-child{border-bottom:none}
+.nq-dot{width:6px;height:6px;border-radius:50%;background:#D4A017;flex-shrink:0;margin-right:10px}
+@media(prefers-color-scheme:dark){
+  .nq-section{border-color:#5A4500}
+  .nq-row{background:#2D2008;color:#F6AD55;border-bottom-color:#5A4500}
+}
+:root[data-theme="dark"] .nq-section{border-color:#5A4500}
+:root[data-theme="dark"] .nq-row{background:#2D2008;color:#F6AD55;border-bottom-color:#5A4500}
+.zero-row td{padding:8px 12px;background:#FAFAFA;border-top:1px dashed var(--border)}
+@media(prefers-color-scheme:dark){.zero-row td{background:#161E2E}}
+:root[data-theme="dark"] .zero-row td{background:#161E2E}
+.zero-label{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.5px}
+.view-toggle{display:flex;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;flex-shrink:0;margin-right:8px}
+.vt-btn{padding:7px 16px;font-size:12px;font-weight:600;cursor:pointer;
+  background:var(--surface);color:var(--muted);border:none;transition:all .15s}
+.vt-btn.active{background:var(--accent);color:#fff}
+.city-total{font-size:15px;font-weight:800;font-variant-numeric:tabular-nums}
+.kw-chips{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.6;display:flex;flex-wrap:wrap;gap:3px}
+.kw-chip{display:inline-block;background:var(--bg);border:1px solid var(--border);
+  border-radius:4px;padding:1px 6px;white-space:normal;overflow-wrap:anywhere;vertical-align:middle}
+.kw-more{display:inline-block;font-size:11px;color:var(--accent);padding:1px 7px;
+  background:var(--accent)18;border:1px solid var(--accent)40;border-radius:4px;
+  cursor:default;user-select:none;font-weight:600;vertical-align:middle;margin-left:4px}
+#kw-floating-dd{display:none;position:fixed;z-index:9999;background:var(--surface);
+  border:1px solid var(--border);border-radius:8px;box-shadow:0 6px 24px #0003;
+  padding:6px 0;min-width:280px;max-width:420px}
+.kw-dd-item{padding:7px 14px;font-size:12px;display:flex;justify-content:space-between;
+  align-items:center;gap:12px;color:var(--text)}
+.kw-dd-item:hover{background:var(--bg)}
+.kw-dd-item b{color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.kw-chips-wrap{position:relative}
+.cntry-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;
+  padding:2px 8px;margin:2px 3px 2px 0;border-radius:4px;
+  background:var(--accent)18;color:var(--accent);border:1px solid var(--accent)35}
+.cntry-vol{font-size:11px;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums;
+  background:var(--border);border-radius:3px;padding:0 4px;margin-left:2px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2">
+    <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+  </svg>
+  <h1>medfuture — SEO Market Demand · UAE</h1>
+  <small>Keyword Intelligence Dashboard · AU keywords in the UAE · September 2026</small>
+</div>
+<div class="tabs" id="tabs"></div>
+<div class="toolbar">
+  <div class="cnt" id="cnt"></div>
+</div>
+<div class="wrap" id="content"></div>
+<div id="kw-floating-dd"></div>
+
+<script>
+const NO_QUERY = {
+  "VR GP": ["FRACGP GP Jobs", "FACRRM GP Jobs", "Metro GP Jobs", "Vocationally Registered GP"],
+  "GP Registrar": ["MM2 GP Jobs", "MM3 GP Jobs", "MM4 GP Jobs", "MM5 GP Jobs", "MM6 GP Jobs", "MM7 GP Jobs", "FSP GP Jobs", "PFP GP Jobs", "PEP Pathway GP Jobs", "DPA GP Jobs"],
+  "GP Locum": ["Aboriginal GP Jobs", "Occupational Health GP Jobs", "Rural & Remote GP Jobs", "After-Hours GP Jobs", "Mens Health GP Jobs", "Womens Health GP Jobs", "Skin Cancer & Cosmetic Services Jobs", "Cannabis Medicine Jobs", "Prison Health Jobs", "Defense Military Health Jobs", "Alcohol Drug GP Jobs", "Telehealth GP Jobs"],
+  "Psychiatrist": ["Adult Psychiatry Jobs", "General Psychiatry Jobs", "Psychiatry of Old Age Jobs"],
+  "OT": ["Community OT Jobs", "Aged Care OT Jobs", "Paediatric OT Jobs", "Mental Health OT Jobs"],
+  "Podiatrist": ["Sports Podiatry Jobs", "Musculoskeletal Podiatry Jobs", "Aged Care Podiatry Jobs"],
+  "Physio": ["Musculoskeletal Physio Jobs", "NDIS Physiotherapist Jobs", "Aged Care Physio Jobs", "Rehab Physiotherapist Jobs"],
+  "Speech Pathologist": ["Paediatric Speech Pathologist Jobs", "Community Speech Pathologist Jobs", "School Speech Pathologist Jobs", "NDIS Speech Pathologist Jobs", "Community Speech Therapy Jobs", "Paediatric Speech Therapy Jobs", "Neuro Speech Rehab Jobs"]
+};
+
+const RAW = {
+  "VR GP":[
+    {"keyword": "general practitioner jobs in dubai", "seed": "General Practitioner Jobs", "target": "Dubai", "au_volume": 720},
+    {"keyword": "general practitioner jobs in abu dhabi", "seed": "General Practitioner Jobs", "target": "Abu Dhabi", "au_volume": 590},
+    {"keyword": "general practitioner jobs in uae", "seed": "General Practitioner Jobs", "target": "UAE", "au_volume": 320},
+    {"keyword": "general practitioner jobs in sharjah", "seed": "General Practitioner Jobs", "target": "Sharjah", "au_volume": 140},
+    {"keyword": "general practitioner jobs ajman", "seed": "General Practitioner Jobs", "target": "Ajman", "au_volume": 20},
+    {"keyword": "abu dhabi general practitioner jobs", "seed": "General Practitioner Jobs", "target": "Abu Dhabi", "au_volume": 0},
+    {"keyword": "dubai healthcare city general practitioner jobs", "seed": "General Practitioner Jobs", "target": "Dubai", "au_volume": 0},
+    {"keyword": "general practitioner jobs in united arab emirates", "seed": "General Practitioner Jobs", "target": "UAE", "au_volume": 0},
+    {"keyword": "uae general practitioner jobs", "seed": "General Practitioner Jobs", "target": "UAE", "au_volume": 0}
+  ],
+  "GP Registrar":[
+
+  ],
+  "GP Locum":[
+
+  ],
+  "Psychology":[
+    {"keyword": "psychology jobs in dubai", "seed": "Psychology Jobs", "target": "Dubai", "au_volume": 320},
+    {"keyword": "psychology jobs in uae", "seed": "Psychology Jobs", "target": "UAE", "au_volume": 320},
+    {"keyword": "business psychology jobs dubai", "seed": "Psychology Jobs", "target": "Dubai", "au_volume": 20},
+    {"keyword": "psychology graduate jobs dubai", "seed": "Psychology Jobs", "target": "Dubai", "au_volume": 20},
+    {"keyword": "psychology jobs in abu dhabi", "seed": "Psychology Jobs", "target": "Abu Dhabi", "au_volume": 10},
+    {"keyword": "educational psychology jobs dubai", "seed": "Psychology Jobs", "target": "Dubai", "au_volume": 0},
+    {"keyword": "educational psychology jobs in abu dhabi", "seed": "Psychology Jobs", "target": "Abu Dhabi", "au_volume": 0},
+    {"keyword": "forensic psychology uae jobs", "seed": "Psychology Jobs", "target": "UAE", "au_volume": 0},
+    {"keyword": "psychology assistant jobs in dubai", "seed": "Psychology Jobs", "target": "Dubai", "au_volume": 0},
+    {"keyword": "psychology job in uae", "seed": "Psychology Jobs", "target": "UAE", "au_volume": 0},
+    {"keyword": "psychology jobs ajman", "seed": "Psychology Jobs", "target": "Ajman", "au_volume": 0},
+    {"keyword": "psychology jobs in ajman", "seed": "Psychology Jobs", "target": "Ajman", "au_volume": 0},
+    {"keyword": "psychology jobs in sharjah", "seed": "Psychology Jobs", "target": "Sharjah", "au_volume": 0},
+    {"keyword": "psychology jobs ras al khaimah", "seed": "Psychology Jobs", "target": "Ras Al Khaimah", "au_volume": 0}
+  ],
+  "Psychiatrist":[
+    {"keyword": "psychiatrist jobs in dubai", "seed": "Psychiatrist Jobs", "target": "Dubai", "au_volume": 70},
+    {"keyword": "psychiatrist job in abu dhabi", "seed": "Psychiatrist Jobs", "target": "Abu Dhabi", "au_volume": 0},
+    {"keyword": "psychiatrist jobs in abu dhabi", "seed": "Psychiatrist Jobs", "target": "Abu Dhabi", "au_volume": 0}
+  ],
+  "Dentist":[
+    {"keyword": "dentist jobs in abu dhabi", "seed": "Dentist Jobs", "target": "Abu Dhabi", "au_volume": 590},
+    {"keyword": "general dentist jobs in dubai", "seed": "Dentist Jobs", "target": "Dubai", "au_volume": 390},
+    {"keyword": "dentist jobs in uae", "seed": "Dentist Jobs", "target": "UAE", "au_volume": 320},
+    {"keyword": "dentist jobs in dubai", "seed": "Dentist Jobs", "target": "Dubai", "au_volume": 210},
+    {"keyword": "dentist jobs in sharjah", "seed": "Dentist Jobs", "target": "Sharjah", "au_volume": 170},
+    {"keyword": "dentist jobs in al ain", "seed": "Dentist Jobs", "target": "Al Ain", "au_volume": 110},
+    {"keyword": "general dentist jobs in sharjah", "seed": "Dentist Jobs", "target": "Sharjah", "au_volume": 30},
+    {"keyword": "dentist jobs dubai salary", "seed": "Dentist Jobs", "target": "Dubai", "au_volume": 20},
+    {"keyword": "dentist jobs in ajman", "seed": "Dentist Jobs", "target": "Ajman", "au_volume": 20},
+    {"keyword": "dentist uae jobs", "seed": "Dentist Jobs", "target": "UAE", "au_volume": 20},
+    {"keyword": "general dentist jobs in abu dhabi", "seed": "Dentist Jobs", "target": "Abu Dhabi", "au_volume": 20},
+    {"keyword": "general dentist jobs in uae", "seed": "Dentist Jobs", "target": "UAE", "au_volume": 20},
+    {"keyword": "dentist jobs in ras al khaimah", "seed": "Dentist Jobs", "target": "Ras Al Khaimah", "au_volume": 10},
+    {"keyword": "dentist job al ain", "seed": "Dentist Jobs", "target": "Al Ain", "au_volume": 0},
+    {"keyword": "dentist job in ajman", "seed": "Dentist Jobs", "target": "Ajman", "au_volume": 0},
+    {"keyword": "dentist job in fujairah", "seed": "Dentist Jobs", "target": "Fujairah", "au_volume": 0},
+    {"keyword": "dentist jobs abudhabi", "seed": "Dentist Jobs", "target": "Abu Dhabi", "au_volume": 0},
+    {"keyword": "dentist jobs in dubai healthcare city", "seed": "Dentist Jobs", "target": "Dubai", "au_volume": 0},
+    {"keyword": "dentist jobs in dubai indeed", "seed": "Dentist Jobs", "target": "Dubai", "au_volume": 0},
+    {"keyword": "dentist jobs in sharjah uae", "seed": "Dentist Jobs", "target": "Sharjah", "au_volume": 0},
+    {"keyword": "dentist jobs in uae salary", "seed": "Dentist Jobs", "target": "UAE", "au_volume": 0},
+    {"keyword": "dentists jobs in abu dhabi", "seed": "Dentist Jobs", "target": "Abu Dhabi", "au_volume": 0},
+    {"keyword": "dentists jobs in ajman", "seed": "Dentist Jobs", "target": "Ajman", "au_volume": 0},
+    {"keyword": "dubai healthcare city dentist job", "seed": "Dentist Jobs", "target": "Dubai", "au_volume": 0},
+    {"keyword": "general dentist jobs in ajman", "seed": "Dentist Jobs", "target": "Ajman", "au_volume": 0},
+    {"keyword": "general dentist jobs in ras al khaimah", "seed": "Dentist Jobs", "target": "Ras Al Khaimah", "au_volume": 0},
+    {"keyword": "general dentist jobs in ras al khaimah ajman fujairah", "seed": "Dentist Jobs", "target": "Ras Al Khaimah", "au_volume": 0},
+    {"keyword": "sharjah dentist job", "seed": "Dentist Jobs", "target": "Sharjah", "au_volume": 0},
+    {"keyword": "sharjah dentist jobs", "seed": "Dentist Jobs", "target": "Sharjah", "au_volume": 0},
+    {"keyword": "uae dentist job", "seed": "Dentist Jobs", "target": "UAE", "au_volume": 0}
+  ],
+  "OT":[
+    {"keyword": "occupational therapist jobs in al ain", "seed": "Occupational Therapist Jobs", "target": "Al Ain", "au_volume": 20},
+    {"keyword": "occupational therapist abu dhabi job", "seed": "Occupational Therapist Jobs", "target": "Abu Dhabi", "au_volume": 0},
+    {"keyword": "occupational therapist job in uae", "seed": "Occupational Therapist Jobs", "target": "UAE", "au_volume": 0}
+  ],
+  "Podiatrist":[
+    {"keyword": "podiatrist dubai jobs", "seed": "Podiatrist Jobs", "target": "Dubai", "au_volume": 0},
+    {"keyword": "podiatrist job abu dhabi", "seed": "Podiatrist Jobs", "target": "Abu Dhabi", "au_volume": 0}
+  ],
+  "Physio":[
+    {"keyword": "physiotherapist jobs in ajman", "seed": "Physiotherapist Jobs", "target": "Ajman", "au_volume": 20},
+    {"keyword": "indeed physiotherapist jobs in alain", "seed": "Physiotherapist Jobs", "target": "Al Ain", "au_volume": 0},
+    {"keyword": "paediatric physiotherapist jobs dubai", "seed": "Physiotherapist Jobs", "target": "Dubai", "au_volume": 0},
+    {"keyword": "physiotherapist job in al ain", "seed": "Physiotherapist Jobs", "target": "Al Ain", "au_volume": 0}
+  ],
+  "Speech Pathologist":[
+    {"keyword": "speech therapist jobs in dubai", "seed": "Speech Therapist Jobs", "target": "Dubai", "au_volume": 110},
+    {"keyword": "speech therapist jobs in sharjah", "seed": "Speech Therapist Jobs", "target": "Sharjah", "au_volume": 30},
+    {"keyword": "speech therapist jobs in uae", "seed": "Speech Therapist Jobs", "target": "UAE", "au_volume": 20},
+    {"keyword": "speech therapist jobs in ajman", "seed": "Speech Therapist Jobs", "target": "Ajman", "au_volume": 0}
+  ],
+"SIMG":[]
+};
+
+const PALETTE=[
+  ["#D4F1F4","#0E6B7A"],["#D5E8D4","#1B5E20"],["#DAE8FC","#1565C0"],
+  ["#E1D5E7","#6A1B9A"],["#FFE6CC","#E65100"],["#FFD5D5","#B71C1C"],
+  ["#FFF3CC","#F57F17"],["#D5F5E3","#145A32"],["#FCE4EC","#880E4F"],
+  ["#E8EAF6","#283593"],["#E0F2F1","#004D40"],["#F3E5F5","#4A148C"],
+  ["#FBE9E7","#BF360C"],["#E0F7FA","#006064"],["#EFEBE9","#4E342E"],
+  ["#F9FBE7","#558B2F"],["#FFF9C4","#F9A825"],["#E3F2FD","#0D47A1"],
+  ["#F1F8E9","#33691E"],["#FDE7F3","#AD1457"]
+];
+const ACCENTS=["#4A90D9","#27AE60","#E67E22","#9B59B6","#E74C3C",
+  "#16A085","#2C3E50","#F39C12","#1ABC9C","#E91E63","#3F51B5","#FF5722"];
+
+function hashColor(n){let h=0;for(let i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))>>>0;return PALETTE[h%PALETTE.length];}
+
+function fillSeeds(rows){
+  let last="Other";
+  return rows.map(r=>{if(r.seed)last=r.seed;return{...r,seed:last};});
+}
+
+const DATA={};
+// Seed group → profession mappings for MOD and AHP splits
+const MOD_MAP = {
+  "Psychology":   s => /psycholog/i.test(s),
+  "Psychiatrist": s => /psychiatr/i.test(s),
+  "Dentist":      s => /dentist/i.test(s),
+};
+const AHP_MAP = {
+  "OT":                 s => /occupational therapist|\bOT\b|paediatric ot|mental health ot/i.test(s),
+  "Podiatrist":         s => /podiatr/i.test(s),
+  "Physio":             s => /physio/i.test(s),
+  "Speech Pathologist": s => /speech/i.test(s),
+};
+// Renamed simple divisions
+const RENAME = {"VR GP":"VR GP","GP Registrar":"GP Registrar","GP Locum":"GP Locum"};
+Object.entries(RAW).forEach(([d,rows])=>{ DATA[d]=fillSeeds(rows); });
+
+const COLORS={};
+Object.values(DATA).flat().forEach(r=>{
+  [r.target].filter(Boolean).forEach(l=>{if(!COLORS[l])COLORS[l]=hashColor(l.toLowerCase());});
+});
+
+let active=Object.keys(DATA).find(d=>(DATA[d]&&DATA[d].length>0)||(NO_QUERY[d]&&NO_QUERY[d].length>0))||Object.keys(DATA)[0];
+let currentView='keyword';
+
+function setView(v){
+  currentView=v;
+  document.getElementById("vt-kw").classList.toggle("active",v==="keyword");
+  document.getElementById("vt-city").classList.toggle("active",v==="city");
+  render();
+}
+
+function renderKeywordView(rows){
+  const groups={};
+  rows.forEach(r=>{const s=r.seed||"Other";(groups[s]=groups[s]||[]).push(r);});
+  const mx=Math.max(...rows.map(r=>r.au_volume),1);
+  const sortedGroups=Object.entries(groups).sort(([,a],[,b])=>{
+    return (b.some(r=>r.au_volume>0)?1:0)-(a.some(r=>r.au_volume>0)?1:0);
+  });
+  let idx=1,html="",si=0;
+  for(const[seed,kws]of sortedGroups){
+    const ac=ACCENTS[si++%ACCENTS.length];
+    const withVol=kws.filter(r=>r.au_volume>0).sort((a,b)=>b.au_volume-a.au_volume);
+    const allZero=withVol.length===0;
+    html+=`<div class="section">
+      <div class="shdr"><span class="sdot" style="background:${ac}"></span>${seed}<span class="scnt">${kws.length} kw</span></div>
+      <div class="tbl-wrap"><table>
+        ${typeColgroup()}
+        <thead><tr><th>#</th><th>Keyword</th><th style="text-align:center">Target</th>${typeHeader()}${active!=="SIMG"?"<th>UAE Volume</th>":""}</tr></thead>
+        <tbody>`;
+    if(allZero){
+      html+=`<tr class="zero-row"><td colspan="5"><span class="zero-label">No Search Volume</span></td></tr>`;
+    } else {
+      withVol.slice(0,5).forEach(r=>{
+        const pct=mx>0?Math.round(r.au_volume/mx*100):0;
+        html+=`<tr>
+          <td class="n"><span class="bar" style="background:${ac}"></span>${idx++}</td>
+          <td class="kw">${r.keyword}</td>
+          <td class="tgt" style="text-align:center">${resolveTarget(r)||"—"}</td>
+          ${typeCell(r)}
+          ${active!=="SIMG"?'<td><div class="vc"><span class="vn">'+r.au_volume.toLocaleString()+'</span><div class="vbw"><div class="vbf" style="width:'+pct+'%"></div></div></div></td>':""}
+        </tr>`;
+      });
+    }
+    html+=`</tbody></table></div></div>`;
+  }
+
+  return html;
+}
+
+const AI_VOL={};
+
+const AI_LOC={};
+function renderAiLocSection(divName){
+  const KEY_MAP={
+    "VR GP":"VR GP","GP Registrar":"GP Registrar","GP Locum":"GP Locum",
+    "Psychology":"Psychology","Psychiatrist":"Psychiatrist","Dentist":"Dentist",
+    "OT":"OT","Podiatrist":"Podiatrist","Physio":"Physio",
+    "Speech Pathologist":"Speech Pathologist"
+  };
+  const key=KEY_MAP[divName];
+  const rows=key&&AI_LOC[key];
+  if(!rows||!rows.length) return '';
+  const mx=Math.max(...rows.map(r=>r.vol),1);
+  let h=`
+  <div style="margin-top:28px;font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;padding-left:2px">
+    &#x1F50D; Where Searchers Are From &mdash; August 2026
+    <span style="font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px;opacity:.6">AI-estimated origin cities of job seekers (Perplexity, Aug 2026)</span>
+  </div>
+  <div class="section"><div class="tbl-wrap"><table>
+    <colgroup><col class="c-num"><col class="c-kw"><col style="width:80px"><col class="c-vol"></colgroup>
+    <thead><tr><th>#</th><th>City</th><th>State</th><th>Est. Monthly Searches</th></tr></thead>
+    <tbody>`;
+  rows.forEach((r,i)=>{
+    const pct=Math.round(r.vol/mx*100);
+    h+=`<tr>
+      <td class="n">${i+1}</td>
+      <td style="text-align:left;padding-left:12px;font-weight:${i<3?'700':'400'};font-size:13px">${r.city}</td>
+      <td style="text-align:center;color:var(--muted);font-size:12px">${r.state}</td>
+      <td><div class="vc"><span class="vn city-total">${r.vol.toLocaleString()}</span><div class="vbw"><div class="vbf" style="width:${pct}%"></div></div></div></td>
+    </tr>`;
+  });
+  h+=`</tbody></table></div></div>`;
+  return h;
+}
+
+function renderAiSection(divName){
+  const KEY_MAP={
+    "VR GP":"VR GP","GP Registrar":"GP Registrar","GP Locum":"GP Locum",
+    "Psychology":"Psychology","Psychiatrist":"Psychiatrist","Dentist":"Dentist",
+    "OT":"OT","Podiatrist":"Podiatrist","Physio":"Physio",
+    "Speech Pathologist":"Speech Pathologist"
+  };
+  const key=KEY_MAP[divName];
+  const rows=key&&AI_VOL[key];
+  if(!rows||!rows.length) return '';
+  const mx=Math.max(...rows.map(r=>r.vol),1);
+  let h=`
+  <div style="margin-top:28px;font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;padding-left:2px">
+    &#x1F916; AI Estimated City Demand &mdash; August 2026
+    <span style="font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px;opacity:.6">AI-estimated monthly searches by city (Perplexity, Aug 2026)</span>
+  </div>
+  <div class="section"><div class="tbl-wrap"><table>
+    <colgroup><col class="c-num"><col class="c-kw"><col style="width:80px"><col class="c-vol"></colgroup>
+    <thead><tr><th>#</th><th>City</th><th>State</th><th>Est. Monthly Searches</th></tr></thead>
+    <tbody>`;
+  rows.forEach((r,i)=>{
+    const pct=Math.round(r.vol/mx*100);
+    h+=`<tr>
+      <td class="n">${i+1}</td>
+      <td style="text-align:left;padding-left:12px;font-weight:${i<3?'700':'400'};font-size:13px">${r.city}</td>
+      <td style="text-align:center;color:var(--muted);font-size:12px">${r.state}</td>
+      <td><div class="vc"><span class="vn city-total">${r.vol.toLocaleString()}</span><div class="vbw"><div class="vbf" style="width:${pct}%"></div></div></div></td>
+    </tr>`;
+  });
+  h+=`</tbody></table></div></div>`;
+  return h;
+}
+
+function renderCityView(rows){
+  const isSIMG = active==="SIMG";
+  const rowVol = r => isSIMG
+    ? (r.from_countries||[]).filter(x=>SIMG_COLS.includes(x.c)).reduce((s,x)=>s+x.v,0)
+    : (r.au_volume||0);
+
+  // Build city map from keywords (top 5 per seed, au_volume > 0)
+  const groups={};
+  rows.forEach(r=>{const s=r.seed||"Other";(groups[s]=groups[s]||[]).push(r);});
+  const visible=[];
+  Object.values(groups).forEach(kws=>{
+    kws.filter(r=>r.au_volume>0).sort((a,b)=>b.au_volume-a.au_volume).forEach(r=>visible.push(r));
+  });
+  const cityMap={};
+  visible.forEach(r=>{
+    const city=resolveTarget(r)||"Other";
+    if(!city||city==="UAE") return;
+    if(!cityMap[city]) cityMap[city]={total:0,keywords:[]};
+    cityMap[city].total+=rowVol(r);
+    cityMap[city].keywords.push(r);
+  });
+  const sorted=Object.entries(cityMap).filter(([,d])=>d.total>0).sort(([,a],[,b])=>b.total-a.total).slice(0,5);
+  if(!sorted.length) return '<div class="empty">No keywords with volume in this division.</div>';
+
+  const mx=Math.max(...sorted.map(([,d])=>d.total),1);
+  const volHdr = isSIMG ? "Total Int'l Volume" : "Total UAE Volume";
+
+  // ── TABLE 1: Target City ─────────────────────────────────────────────────
+  let html=`
+  <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;padding-left:2px">
+    Target City &mdash; Keyword Search Demand
+  </div>
+  <div class="section"><div class="tbl-wrap"><table>
+    <colgroup><col class="c-num"><col class="c-kw"><col style="width:120px"><col class="c-vol"></colgroup>
+    <thead><tr><th>#</th><th>Target City</th><th>Keywords</th><th>${volHdr}</th></tr></thead>
+    <tbody>`;
+  sorted.forEach(([city,d],i)=>{
+    const pct=Math.round(d.total/mx*100);
+    const sorted_kws=d.keywords.sort((a,b)=>rowVol(b)-rowVol(a));
+    const chips=sorted_kws.slice(0,3).map(r=>`<span class="kw-chip">${r.keyword} <b>${rowVol(r).toLocaleString()}</b></span>`).join("");
+    const extraItems=sorted_kws.slice(3).map(r=>`<div class="kw-dd-item"><span>${r.keyword}</span><b>${rowVol(r).toLocaleString()}</b></div>`).join("");
+    const moreHtml=extraItems.replace(/"/g,"&quot;");
+    const more=sorted_kws.length>3?`<span class="kw-more" data-dd="${moreHtml}" onmouseenter="showDd(this)" onmouseleave="hideDd(this)">+${sorted_kws.length-3} more</span>`:"";
+    html+=`<tr>
+      <td class="n">${i+1}</td>
+      <td class="tgt" style="text-align:left;padding-left:12px">
+        <span style="font-weight:700;font-size:13px">${city}</span>
+        <div class="kw-chips kw-chips-wrap">${chips}${more}</div>
+      </td>
+      <td style="text-align:center;color:var(--muted);font-size:12px">${d.keywords.length}</td>
+      <td><div class="vc"><span class="vn city-total">${d.total.toLocaleString()}</span><div class="vbw"><div class="vbf" style="width:${pct}%"></div></div></div></td>
+    </tr>`;
+  });
+  html+=`</tbody></table></div></div>`;
+
+  // ── TABLE 3: Searcher Location ────────────────────────────────────────────
+  if(isSIMG){
+    // SIMG: aggregate from_countries from keywords visible in keyword view (top 5 per seed)
+    const countryTotals={};
+    visible.forEach(r=>{
+      (r.from_countries||[]).forEach(fc=>{
+        countryTotals[fc.c]=(countryTotals[fc.c]||0)+fc.v;
+      });
+    });
+    const topCountries=Object.entries(countryTotals).sort(([,a],[,b])=>b-a).slice(0,10);
+    if(topCountries.length){
+      const cMax=topCountries[0][1];
+      const cTotal=Object.values(countryTotals).reduce((s,v)=>s+v,0);
+      html+=`
+  <div style="margin-top:32px;font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;padding-left:2px">
+    🌏 Searcher Origin &mdash; Top 10 Countries
+    <span style="font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px;opacity:.6">Countries where IMG candidates are searching from (SEMrush)</span>
+  </div>
+  <div class="section"><div class="tbl-wrap"><table>
+    <colgroup><col class="c-num"><col class="c-kw"><col class="c-vol"><col style="width:80px"></colgroup>
+    <thead><tr><th>#</th><th>Country</th><th>Search Volume</th><th style="text-align:center">% of Total</th></tr></thead>
+    <tbody>`;
+      topCountries.forEach(([country,vol],i)=>{
+        const pctC=Math.round(vol/cMax*100);
+        const pctOfTotal=((vol/cTotal)*100).toFixed(1);
+        html+=`<tr>
+          <td class="n">${i+1}</td>
+          <td class="tgt" style="text-align:left;padding-left:12px;font-weight:600">${country}</td>
+          <td><div class="vc"><span class="vn">${vol.toLocaleString()}</span><div class="vbw"><div class="vbf" style="width:${pctC}%"></div></div></div></td>
+          <td style="text-align:center;font-size:12px;font-weight:600">${pctOfTotal}%</td>
+        </tr>`;
+      });
+      html+=`</tbody></table></div></div>`;
+    }
+  }
+
+  return html;
+}
+
+function render(){
+  const rows=DATA[active]||[];
+  document.getElementById("cnt").textContent=rows.length+" keyword"+(rows.length!==1?"s":"");
+  const nq=NO_QUERY[active]||[];
+  let html=active==="SIMG" ? (rows.length ? renderKeywordView(rows) : '<div class="empty">No IMG keywords found.</div>') : (rows.length ? renderCityView(rows) : '<div class="empty">No search volume data found for this division.</div>');
+  if(nq.length){
+    html+=`<div class="nq-section" style="margin-top:16px">`;
+    nq.forEach(s=>{html+=`<div class="nq-row"><span class="nq-dot"></span>${s} — No Related Queries Found</div>`;});
+    html+=`</div>`;
+  }
+  document.getElementById("content").innerHTML=html;
+}
+
+const _dd=document.getElementById("kw-floating-dd");
+let _ddTimer=null;
+function showDd(el){
+  clearTimeout(_ddTimer);
+  _dd.innerHTML=el.dataset.dd;
+  _dd.style.display="block";
+  const r=el.getBoundingClientRect();
+  const ddW=300;
+  let left=r.left;
+  if(left+ddW>window.innerWidth-8) left=window.innerWidth-ddW-8;
+  let top=r.bottom+4;
+  _dd.style.left=left+"px";
+  _dd.style.top=top+"px";
+  _dd.onmouseenter=()=>clearTimeout(_ddTimer);
+  _dd.onmouseleave=()=>{_dd.style.display="none";};
+}
+function hideDd(){
+  _ddTimer=setTimeout(()=>{_dd.style.display="none";},120);
+}
+
+// Seek job counts per division per city (last 31 days) — populated by seek_job_counts.py
+const SEEK = {};
+
+var SIMG_COLS=(function(){
+  if(!RAW.SIMG) return [];
+  var t={};
+  RAW.SIMG.forEach(function(r){(r.from_countries||[]).forEach(function(x){t[x.c]=(t[x.c]||0)+x.v;});});
+  return Object.entries(t).sort(function(a,b){return b[1]-a[1];}).slice(0,8).map(function(x){return x[0];});
+})();
+// State-level target resolver — if keyword mentions a state but no city, use state name
+const STATE_MAP = [];
+function resolveTarget(r){
+  if(r.target && r.target!=='' && r.target!=='UAE') return r.target;
+  var kw=(r.keyword||'').toLowerCase();
+  for(var s of STATE_MAP){
+    var hasState=s.patterns.some(p=>p.test(kw));
+    if(hasState){
+      var hasCity=s.cities.some(c=>kw.includes(c));
+      if(!hasCity) return s.label;
+    }
+  }
+  return r.target==='UAE' ? 'UAE' : '';
+}
+
+function typeColgroup(){
+  if(active!=='SIMG') return '<colgroup><col class="c-num"><col class="c-kw"><col class="c-tgt"><col class="c-typ"><col class="c-vol"></colgroup>';
+  var c='<colgroup><col class="c-num"><col class="c-kw" style="width:280px"><col class="c-tgt">';
+  SIMG_COLS.forEach(function(){c+='<col style="width:72px">';});
+  return c+'</colgroup>';
+}
+function typeHeader(){
+  if(active!=='SIMG') return '<th>Type</th>';
+  return SIMG_COLS.map(function(c){return '<th style="text-align:center;font-size:10px;white-space:normal;overflow:visible;word-break:break-word">'+c+'</th>';}).join('');
+}
+function typeCell(r){
+  if(active!=='SIMG') return '<td style="text-align:center"><span class="cand">Candidate</span></td>';
+  var lk={};
+  (r.from_countries||[]).forEach(function(x){lk[x.c]=x.v;});
+  return SIMG_COLS.map(function(c){
+    var v=lk[c]||0;
+    return v>0?'<td style="text-align:center;font-weight:700;font-size:12px;color:var(--accent)">'+v+'</td>'
+              :'<td style="text-align:center;color:var(--border);font-size:12px">—</td>';
+  }).join('');
+}
+const TAB_LABELS={"SIMG":"FIMG"};
+function buildTabs(){
+  const wrap=document.getElementById("tabs");
+  Object.keys(DATA).forEach(d=>{
+    const hasData=DATA[d]&&DATA[d].length>0;
+    const hasNQ=NO_QUERY[d]&&NO_QUERY[d].length>0;
+    if(!hasData&&!hasNQ) return;
+    const t=document.createElement("div");
+    t.className="tab"+(d===active?" active":"");
+    t.textContent=TAB_LABELS[d]||d;
+    t.onclick=()=>{
+      active=d;
+      document.querySelectorAll(".tab").forEach(el=>el.classList.remove("active"));
+      t.classList.add("active");render();
+    };
+    wrap.appendChild(t);
+  });
+}
+
+buildTabs();render();
+</script>
+</body>
+</html>
+
